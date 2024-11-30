@@ -9,13 +9,36 @@
 </head>
 <body>
     <h1>Todos</h1>
-    <ul>
-    <% todos.forEach( el => { %>
+    
+    <h2>Work</h2>
+        <% todos.filter((todo) => todo.category === 'work').forEach( el => { %>
             <li class='todoItem' data-id='<%=el._id%>'>
                 <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
                 <span class='del'> Delete </span>
             </li>
-    <% }) %>    
+        <% }) %>   
+    <h2>Chores</h2>
+    <% todos.filter((todo) => todo.category === 'chores').forEach( el => { %>
+        <li class='todoItem' data-id='<%=el._id%>'>
+            <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+            <span class='del'> Delete </span>
+        </li>
+    <% }) %>   
+    <h2>Health</h2>
+    <% todos.filter((todo) => todo.category === 'health').forEach( el => { %>
+        <li class='todoItem' data-id='<%=el._id%>'>
+            <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+            <span class='del'> Delete </span>
+        </li>
+    <% }) %> 
+    <h2>Fun</h2>
+    <ul>
+        <% todos.filter((todo) => todo.category === 'fun').forEach( el => { %>
+            <li class='todoItem' data-id='<%=el._id%>'>
+                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                <span class='del'> Delete </span>
+            </li>
+        <% }) %>   
     </ul>
 
     <h2><%= user.userName %> has <%= left %> things left to do.</h2>
@@ -27,7 +50,7 @@
 
         <select name="category" id="category">
           <option value="work">Work</option>
-          <option value="home">Chores</option>
+          <option value="chores">Chores</option>
           <option value="health">Health</option>
           <option value="fun">Fun</option>
         </select>
