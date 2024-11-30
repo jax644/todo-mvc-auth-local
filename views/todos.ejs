@@ -22,6 +22,16 @@
 
     <form action="/todos/createTodo" method='POST'>
         <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+
+        <label for="cateogry">Choose a category:</label>
+
+        <select name="category" id="category">
+          <option value="work">Work</option>
+          <option value="home">Chores</option>
+          <option value="health">Health</option>
+          <option value="fun">Fun</option>
+        </select>
+
         <input type="submit">
     </form>
 
