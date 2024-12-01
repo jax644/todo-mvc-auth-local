@@ -5,43 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://kit.fontawesome.com/f10ee52e76.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <header>
+        <div class="logout-container">
+            <a href="/logout">Logout</a>
+        </div>
+        
+    </header>
     <h1>Todos</h1>
-    
-    <h2>Work</h2>
-        <% todos.filter((todo) => todo.category === 'work').forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span class='del'> Delete </span>
-            </li>
-        <% }) %>   
-    <h2>Chores</h2>
-    <% todos.filter((todo) => todo.category === 'chores').forEach( el => { %>
-        <li class='todoItem' data-id='<%=el._id%>'>
-            <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-            <span class='del'> Delete </span>
-        </li>
-    <% }) %>   
-    <h2>Health</h2>
-    <% todos.filter((todo) => todo.category === 'health').forEach( el => { %>
-        <li class='todoItem' data-id='<%=el._id%>'>
-            <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-            <span class='del'> Delete </span>
-        </li>
-    <% }) %> 
-    <h2>Fun</h2>
-    <ul>
-        <% todos.filter((todo) => todo.category === 'fun').forEach( el => { %>
-            <li class='todoItem' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                <span class='del'> Delete </span>
-            </li>
-        <% }) %>   
-    </ul>
-
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+    <div class="todos-container">
+        <div class="card">
+            <h4><i class="fa-solid fa-briefcase"></i> Work</h4>
+            <% todos.filter((todo) => todo.category === 'work').forEach( el => { %>
+                <li class='todoItem' data-id='<%=el._id%>'>
+                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                    <span class='del'> Delete </span>
+                </li>
+            <% }) %>  
+        </div>
+        <div class="card">
+            <h4><i class="fa-solid fa-soap"></i> Chores</h4>
+            <% todos.filter((todo) => todo.category === 'chores').forEach( el => { %>
+                <li class='todoItem' data-id='<%=el._id%>'>
+                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                    <span class='del'> Delete </span>
+                </li>
+            <% }) %>  
+        </div>
+        <div class="card">
+            <h4><i class="fa-solid fa-notes-medical"></i> Health</h4>
+            <% todos.filter((todo) => todo.category === 'health').forEach( el => { %>
+                <li class='todoItem' data-id='<%=el._id%>'>
+                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                    <span class='del'> Delete </span>
+                </li>
+            <% }) %> 
+        </div>
+        <div class="card">
+            <h4><i class="fa-solid fa-face-smile"></i> Fun</h4>
+                <% todos.filter((todo) => todo.category === 'fun').forEach( el => { %>
+                    <li class='todoItem' data-id='<%=el._id%>'>
+                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                        <span class='del'> Delete </span>
+                    </li>
+                <% }) %>   
+        </div>
+    </div>
+   
+    <h5><%= user.userName %>, you have <%= left %> things left to do.</h5>
 
     <form action="/todos/createTodo" method='POST'>
         <input type="text" placeholder="Enter Todo Item" name='todoItem'>
@@ -55,10 +70,8 @@
           <option value="fun">Fun</option>
         </select>
 
-        <input type="submit">
+        <button type="submit">Submit</button>
     </form>
-
-    <a href="/logout">Logout</a>
 
     <script src="js/main.js"></script>
 </body>
